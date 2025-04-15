@@ -1,0 +1,21 @@
+services:
+  go_db:
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: gopportunities_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - gopportunities_network
+
+volumes:
+  db_data:
+
+networks:
+  gopportunities_network:
+    driver: bridge
