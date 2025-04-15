@@ -11,7 +11,7 @@ var ()
 func InitializePostgres() (*gorm.DB, error) {
 	logger := GetLogger()
 
-	dsn := "host=localhost user=postgres password=postgres dbname=gopportunities_db port=5432 sslmode=disable"
+	dsn := "host=go_db user=postgres password=postgres dbname=gopportunities_db port=5432"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		logger.Errorf("Postgres opening error: %v", err)

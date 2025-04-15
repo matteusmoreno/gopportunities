@@ -12,6 +12,24 @@ services:
       - db_data:/var/lib/postgresql/data
     networks:
       - gopportunities_network
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "postgres" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
+
+
+  gopportunity_app:
+    container_name: gopportunity_container
+    image: gopportunity_image
+    build: .
+    ports:
+      - "8090:8090"
+    depends_on:
+      - go_db
+    networks:
+      - gopportunities_network
 
 volumes:
   db_data:
