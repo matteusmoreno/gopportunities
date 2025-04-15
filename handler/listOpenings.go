@@ -14,7 +14,11 @@ func ListOpeningsHandler(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, gin.H{
-		"openings": openings,
-	})
+	//to opening response list
+	var openingResponses []schemas.OpeningResponse
+	for _, opening := range openings {
+		openingResponses = append(openingResponses, schemas.ToOpeningResponse(opening))
+	}
+
+	ctx.JSON(http.StatusOK, openingResponses)
 }

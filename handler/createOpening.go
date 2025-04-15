@@ -48,19 +48,6 @@ func CreateOpeningHandler(ctx *gin.Context) {
 		return
 	}
 
-	openingResponse := schemas.OpeningResponse{
-		ID:        opening.ID,
-		Role:      opening.Role,
-		Company:   opening.Company,
-		Location:  opening.Location,
-		Remote:    opening.Remote,
-		Link:      opening.Link,
-		Salary:    opening.Salary,
-		CreatedAt: opening.CreatedAt,
-		UpdatedAt: opening.UpdatedAt,
-		DeletedAt: nil,
-	}
-
 	// Retorna o objeto criado
-	ctx.JSON(http.StatusCreated, openingResponse)
+	ctx.JSON(http.StatusCreated, schemas.ToOpeningResponse(opening))
 }

@@ -24,7 +24,5 @@ func ShowOpeningHandler(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, gin.H{
-		"opening": opening,
-	})
+	ctx.JSON(http.StatusOK, schemas.ToOpeningResponse(opening))
 }

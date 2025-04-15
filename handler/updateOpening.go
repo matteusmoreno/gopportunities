@@ -54,8 +54,5 @@ func UpdateOpeningHandler(ctx *gin.Context) {
 	}
 
 	// Resposta de sucesso
-	ctx.JSON(http.StatusOK, gin.H{
-		"message": "Opening updated successfully",
-		"data":    opening,
-	})
+	ctx.JSON(http.StatusOK, schemas.ToOpeningResponse(opening))
 }

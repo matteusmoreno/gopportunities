@@ -27,3 +27,23 @@ type OpeningResponse struct {
 	UpdatedAt time.Time  `json:"updated_at"`
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
 }
+
+func ToOpeningResponse(opening Opening) OpeningResponse {
+	var deletedAt *time.Time
+	if opening.DeletedAt.Valid {
+		deletedAt = &opening.DeletedAt.Time
+	}
+
+	return OpeningResponse{
+		ID:        opening.ID,
+		Role:      opening.Role,
+		Company:   opening.Company,
+		Location:  opening.Location,
+		Remote:    opening.Remote,
+		Link:      opening.Link,
+		Salary:    opening.Salary,
+		CreatedAt: opening.CreatedAt,
+		UpdatedAt: opening.UpdatedAt,
+		DeletedAt: deletedAt,
+	}
+}
