@@ -6,8 +6,6 @@ import (
 	"gorm.io/gorm"
 )
 
-var ()
-
 func InitializePostgres() (*gorm.DB, error) {
 	logger := GetLogger()
 
